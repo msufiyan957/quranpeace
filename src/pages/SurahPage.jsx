@@ -122,6 +122,14 @@ export default function SurahPage() {
         >
           <SpeakerIcon /> Transliteration
         </button>
+        <button
+          type="button"
+          className={`pill-btn${settings.showWordMeaning ? ' active' : ''}`}
+          onClick={() => update({ showWordMeaning: !settings.showWordMeaning })}
+          aria-pressed={settings.showWordMeaning}
+        >
+          <SpeakerIcon /> Word meaning
+        </button>
       </div>
 
       {surah.ayahs.map((ayah) => (
@@ -140,6 +148,7 @@ export default function SurahPage() {
           }
           showTranslation={settings.showTranslation}
           showTransliteration={settings.showTransliteration}
+          showWordMeaning={settings.showWordMeaning}
           bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
           onPlay={player.play}
           onBookmark={(a) =>

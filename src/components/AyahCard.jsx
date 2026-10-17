@@ -12,6 +12,7 @@ const AyahCard = forwardRef(function AyahCard(
     activeWordPosition,
     showTranslation,
     showTransliteration,
+    showWordMeaning,
     bookmarked,
     onPlay,
     onBookmark,
@@ -64,7 +65,7 @@ const AyahCard = forwardRef(function AyahCard(
               {showTransliteration && w.transliteration && (
                 <span className="word__transliteration">{w.transliteration}</span>
               )}
-              {w.meaning && <span className="word__meaning">{w.meaning}</span>}
+              {showWordMeaning && w.meaning && <span className="word__meaning">{w.meaning}</span>}
             </span>
           ))
         ) : (
