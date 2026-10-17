@@ -114,6 +114,14 @@ export default function SurahPage() {
         >
           <SpeakerIcon /> Translation
         </button>
+        <button
+          type="button"
+          className={`pill-btn${settings.showTransliteration ? ' active' : ''}`}
+          onClick={() => update({ showTransliteration: !settings.showTransliteration })}
+          aria-pressed={settings.showTransliteration}
+        >
+          <SpeakerIcon /> Transliteration
+        </button>
       </div>
 
       {surah.ayahs.map((ayah) => (
@@ -131,6 +139,7 @@ export default function SurahPage() {
               : null
           }
           showTranslation={settings.showTranslation}
+          showTransliteration={settings.showTransliteration}
           bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
           onPlay={player.play}
           onBookmark={(a) =>

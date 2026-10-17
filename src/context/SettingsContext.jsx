@@ -19,6 +19,8 @@ function defaults() {
     reciter: RECITERS[0].id,
     arabicScale: 1,
     showTranslation: true,
+    showTransliteration: false,
+    showWordMeaning: true,
     continuousPlay: true,
   }
 }
