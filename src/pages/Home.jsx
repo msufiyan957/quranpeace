@@ -121,8 +121,7 @@ export default function Home() {
           <span />
         </div>
         <p className="dedication">
-          I built this for my akhirah. I don't know who will read this, but I pray
-          Allah rewards you a billion times more than me.
+          Built with the hope that it serves you well — and that it counts for good, in sha Allah.
         </p>
       </div>
     </div>
