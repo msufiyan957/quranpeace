@@ -4,6 +4,7 @@ import { getSurahList } from '../api/quran.js'
 import { useBookmarks } from '../context/BookmarksContext.jsx'
 import SurahCard from '../components/SurahCard.jsx'
 import { SearchIcon, BookIcon, ChevronRightIcon } from '../components/Icons.jsx'
+import { getHadithOfTheDay } from '../data/hadiths.js'
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -35,6 +36,7 @@ export default function Home() {
   }, [surahs, query])
 
   const progress = lastRead ? Math.round((lastRead.numberInSurah / lastRead.totalAyahs) * 100) : 0
+  const hadith = useMemo(() => getHadithOfTheDay(), [])
 
   return (
     <div className="page">
@@ -45,6 +47,12 @@ export default function Home() {
           </p>
           <h1 className="home-hero__title">The Noble Qur'an</h1>
           <p className="home-hero__subtitle">Read, listen, and reflect — in Arabic and your language.</p>
+
+          <div className="hadith-of-day">
+            <span className="hadith-of-day__label">Hadith of the Day</span>
+            <p className="hadith-of-day__text">"{hadith.text}"</p>
+            <span className="hadith-of-day__source">{hadith.source}</span>
+          </div>
         </section>
 
         <div className="search-bar">

@@ -332,6 +332,36 @@ button {
   margin: 6px 0 0;
 }
 
+.hadith-of-day {
+  position: relative;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+
+.hadith-of-day__label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+
+.hadith-of-day__text {
+  margin: 6px 0 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.hadith-of-day__source {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
 .search-bar {
   display: flex;
   align-items: center;
