@@ -56,6 +56,13 @@ export default function SurahPage() {
 
   const isCurrentSurah = player.surah?.number === surahNumber
 
+  // Follow the active ayah as recitation advances through the surah
+  useEffect(() => {
+    if (!isCurrentSurah || !player.currentAyah) return
+    const el = document.getElementById(`ayah-${player.currentAyah.numberInSurah}`)
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }, [isCurrentSurah, player.currentAyah])
+
   if (error) {
     return (
       <div className="page container">
