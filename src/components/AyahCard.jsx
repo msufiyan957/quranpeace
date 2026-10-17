@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { PlayIcon, PauseIcon, BookmarkIcon } from './Icons.jsx'
+import { PlayIcon, PauseIcon, BookmarkIcon, LoopIcon } from './Icons.jsx'
 
 const AyahCard = forwardRef(function AyahCard(
   {
@@ -14,8 +14,10 @@ const AyahCard = forwardRef(function AyahCard(
     showTransliteration,
     showWordMeaning,
     bookmarked,
+    looping,
     onPlay,
     onBookmark,
+    onToggleLoop,
   },
   ref
 ) {
@@ -51,6 +53,16 @@ const AyahCard = forwardRef(function AyahCard(
             ) : (
               <PlayIcon />
             )}
+          </button>
+          <button
+            type="button"
+            className={`icon-btn${looping ? ' icon-btn--active' : ''}`}
+            onClick={onToggleLoop}
+            aria-pressed={looping}
+            aria-label={looping ? 'Stop repeating this ayah' : `Repeat ayah ${ayah.numberInSurah} to memorize`}
+            title="Repeat this ayah"
+          >
+            <LoopIcon />
           </button>
         </div>
         {showTranslation && <p className="quran-row__translation">{ayah.translation}</p>}

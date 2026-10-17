@@ -133,35 +133,43 @@ export default function SurahPage() {
       </div>
 
       <div className="quran-page">
-        {surah.ayahs.map((ayah) => (
-          <AyahCard
-            key={ayah.number}
-            ayah={ayah}
-            surahNumber={surahNumber}
-            isActive={isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah}
-            isPlaying={player.isPlaying}
-            isLoading={player.isLoading}
-            words={wordsBySurah?.get(ayah.numberInSurah)}
-            activeWordPosition={
-              isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah
-                ? player.activeWordPosition
-                : null
-            }
-            showTranslation={settings.showTranslation}
-            showTransliteration={settings.showTransliteration}
-            showWordMeaning={settings.showWordMeaning}
-            bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
-            onPlay={player.play}
-            onBookmark={(a) =>
-              toggleBookmark({
-                surahNumber,
-                surahName: surah.englishName,
-                numberInSurah: a.numberInSurah,
-                text: a.translation,
-              })
-            }
-          />
-        ))}
+        {surah.ayahs.map((ayah) => {
+          const isActive = isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah
+          return (
+            <AyahCard
+              key={ayah.number}
+              ayah={ayah}
+              surahNumber={surahNumber}
+              isActive={isActive}
+              isPlaying={player.isPlaying}
+              isLoading={player.isLoading}
+              words={wordsBySurah?.get(ayah.numberInSurah)}
+              activeWordPosition={isActive ? player.activeWordPosition : null}
+              showTranslation={settings.showTranslation}
+              showTransliteration={settings.showTransliteration}
+              showWordMeaning={settings.showWordMeaning}
+              bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
+              looping={isActive && player.loopAyah}
+              onPlay={player.play}
+              onToggleLoop={() => {
+                if (isActive) {
+                  player.setLoopAyah(!player.loopAyah)
+                } else {
+                  player.play(surahNumber, ayah.numberInSurah - 1)
+                  player.setLoopAyah(true)
+                }
+              }}
+              onBookmark={(a) =>
+                toggleBookmark({
+                  surahNumber,
+                  surahName: surah.englishName,
+                  numberInSurah: a.numberInSurah,
+                  text: a.translation,
+                })
+              }
+            />
+          )
+        })}
       </div>
     </div>
   )

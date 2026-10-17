@@ -31,6 +31,10 @@ body {
   padding-bottom: 96px;
 }
 
+body.has-mini-player {
+  padding-bottom: 180px;
+}
+
 #root {
   min-height: 100vh;
   display: flex;
@@ -226,6 +230,11 @@ button {
 
 .icon-btn--primary:hover {
   background: var(--accent-dim);
+}
+
+.icon-btn--active {
+  color: var(--accent);
+  background: rgba(47, 174, 122, 0.15);
 }
 
 .icon-btn--lg {
@@ -745,4 +754,14 @@ button {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+.dedication {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  font-style: italic;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: 32px auto 24px;
 }

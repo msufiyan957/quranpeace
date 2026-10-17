@@ -69,6 +69,11 @@ export default function Home() {
           <SurahCard key={s.number} surah={s} />
         ))}
       </div>
+
+      <p className="dedication">
+        I built this for my akhirah. I don't know who will read this, but I pray
+        Allah rewards you a billion times more than me.
+      </p>
     </div>
   )
 }

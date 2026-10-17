@@ -17,6 +17,7 @@ export function PlayerProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState(null)
   const [activeWordPosition, setActiveWordPosition] = useState(null)
+  const [loopAyah, setLoopAyah] = useState(false)
 
   useEffect(() => {
     const audio = new Audio()
@@ -34,6 +35,7 @@ export function PlayerProvider({ children }) {
 
   async function playAt(surahNumber, idx) {
     setError(null)
+    setLoopAyah(false)
     setIsLoading(true)
     try {
       let s = surah
@@ -127,13 +129,20 @@ export function PlayerProvider({ children }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings.reciter, settings.translation])
 
-  // Rebind the "ended" handler so it always sees the latest surah/index/continuousPlay
+  // Rebind the "ended" handler so it always sees the latest surah/index/continuousPlay/loopAyah
   useEffect(() => {
     const audio = audioRef.current
     if (!audio) return
-    audio.onended = goToNext
+    audio.onended = () => {
+      if (loopAyah) {
+        audio.currentTime = 0
+        audio.play()
+      } else {
+        goToNext()
+      }
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [surah, index, settings.continuousPlay])
+  }, [surah, index, settings.continuousPlay, loopAyah])
 
   const currentAyah = surah ? surah.ayahs[index] : null
 
@@ -147,6 +156,8 @@ export function PlayerProvider({ children }) {
         isLoading,
         error,
         activeWordPosition,
+        loopAyah,
+        setLoopAyah,
         play: playAt,
         toggle: togglePlayPause,
         next: goToNext,
