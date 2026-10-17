@@ -151,6 +151,7 @@ export default function SurahPage() {
               bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
               looping={isActive && player.loopAyah}
               onPlay={player.play}
+              onToggle={player.toggle}
               onToggleLoop={() => {
                 if (isActive) {
                   player.setLoopAyah(!player.loopAyah)

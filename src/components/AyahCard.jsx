@@ -16,6 +16,7 @@ const AyahCard = forwardRef(function AyahCard(
     bookmarked,
     looping,
     onPlay,
+    onToggle,
     onBookmark,
     onToggleLoop,
   },
@@ -43,7 +44,7 @@ const AyahCard = forwardRef(function AyahCard(
           <button
             type="button"
             className="icon-btn icon-btn--primary"
-            onClick={() => onPlay(surahNumber, ayah.numberInSurah - 1)}
+            onClick={() => (isActive ? onToggle() : onPlay(surahNumber, ayah.numberInSurah - 1))}
             aria-label={isActive && isPlaying ? 'Pause' : `Play ayah ${ayah.numberInSurah}`}
           >
             {isActive && isLoading ? (
