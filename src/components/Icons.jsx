@@ -20,3 +20,4 @@ export const SpeakerIcon = (props) => base(props, <g><path d="M3 10v4h4l5 4V6l-5
 export const PlusIcon = (props) => base(props, <g><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></g>)
 export const MinusIcon = (props) => base(props, <line x1="5" y1="12" x2="19" y2="12" />)
 export const LoopIcon = (props) => base(props, <g><path d="M17 2l4 4-4 4" /><path d="M3 11V9a4 4 0 0 1 4-4h14" /><path d="M7 22l-4-4 4-4" /><path d="M21 13v2a4 4 0 0 1-4 4H3" /></g>)
+export const ChevronRightIcon = (props) => base(props, <polyline points="9 18 15 12 9 6" />)
