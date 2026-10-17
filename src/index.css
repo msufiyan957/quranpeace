@@ -10,8 +10,29 @@
   --accent-contrast: #06140d;
   --danger: #e2574c;
   --focus: #f3c969;
+  --hover-overlay: rgba(255, 255, 255, 0.08);
+  --spinner-track: rgba(255, 255, 255, 0.25);
+  --bg-header: rgba(15, 17, 21, 0.92);
   --radius: 16px;
   color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #faf8f3;
+  --bg-elevated: #f1ede3;
+  --bg-card: #ffffff;
+  --border: #e3ddd0;
+  --text: #211f1a;
+  --text-dim: #6b665c;
+  --accent: #1f8a60;
+  --accent-dim: #176a4a;
+  --accent-contrast: #ffffff;
+  --danger: #c9372c;
+  --focus: #b4790d;
+  --hover-overlay: rgba(0, 0, 0, 0.06);
+  --spinner-track: rgba(0, 0, 0, 0.15);
+  --bg-header: rgba(250, 248, 243, 0.92);
+  color-scheme: light;
 }
 
 * {
@@ -90,7 +111,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(15, 17, 21, 0.92);
+  background: var(--bg-header);
   backdrop-filter: blur(6px);
   border-bottom: 1px solid var(--border);
 }
@@ -218,7 +239,7 @@ button {
 }
 
 .icon-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--hover-overlay);
 }
 
 .icon-btn--primary {
@@ -299,7 +320,7 @@ button {
   padding: 16px;
   margin-bottom: 20px;
   text-decoration: none;
-  color: var(--text);
+  color: #f5f1e8;
 }
 
 .continue-card__text {
@@ -721,7 +742,7 @@ button {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 3px solid rgba(255, 255, 255, 0.25);
+  border: 3px solid var(--spinner-track);
   border-top-color: var(--accent);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;

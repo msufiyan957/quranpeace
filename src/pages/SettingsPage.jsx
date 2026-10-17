@@ -2,12 +2,36 @@ import { useSettings } from '../context/SettingsContext.jsx'
 import { RECITERS, TRANSLATIONS } from '../api/quran.js'
 import { PlusIcon, MinusIcon, LoopIcon } from '../components/Icons.jsx'
 
+const THEMES = [
+  { id: 'light', name: 'Light' },
+  { id: 'dark', name: 'Dark' },
+  { id: 'system', name: 'System' },
+]
+
 export default function SettingsPage() {
   const { settings, update, setArabicScale } = useSettings()
 
   return (
     <div className="page container">
       <h1 className="page-title">Settings</h1>
+
+      <div className="settings-group">
+        <h2>Appearance</h2>
+        <div className="option-row">
+          {THEMES.map((t) => (
+            <button
+              key={t.id}
+              type="button"
+              className={`option-pill${settings.theme === t.id ? ' active' : ''}`}
+              onClick={() => update({ theme: t.id })}
+              aria-pressed={settings.theme === t.id}
+            >
+              {t.name}
+              <span className="option-pill__check" aria-hidden="true" />
+            </button>
+          ))}
+        </div>
+      </div>
 
       <div className="settings-group">
         <h2>Reciter</h2>

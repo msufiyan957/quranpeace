@@ -9,6 +9,20 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Noto+Naskh+Arabic:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <title>QuranPeace — Read &amp; Listen to the Quran</title>
+  <script>
+    (function () {
+      try {
+        var raw = localStorage.getItem('qp.settings.v1')
+        var theme = raw ? JSON.parse(raw).theme : null
+        if (theme === 'system' || !theme) {
+          theme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+        }
+        document.documentElement.setAttribute('data-theme', theme)
+      } catch (e) {
+        /* fall back to the default dark theme baked into index.css */
+      }
+    })()
+  </script>
 </head>
 <body>
   <div id="root"></div>

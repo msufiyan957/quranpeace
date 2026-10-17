@@ -22,6 +22,7 @@ function defaults() {
     showTransliteration: false,
     showWordMeaning: true,
     continuousPlay: true,
+    theme: 'dark',
   }
 }
 
@@ -33,6 +34,25 @@ export function SettingsProvider({ children }) {
   useEffect(() => {
     localStorage.setItem(KEY, JSON.stringify(settings))
   }, [settings])
+
+  // Reflect the chosen theme on <html>, following the OS preference live when set to "system"
+  useEffect(() => {
+    const root = document.documentElement
+    const media = window.matchMedia('(prefers-color-scheme: light)')
+
+    function apply() {
+      const resolved = settings.theme === 'system' ? (media.matches ? 'light' : 'dark') : settings.theme
+      root.setAttribute('data-theme', resolved)
+      const meta = document.querySelector('meta[name="theme-color"]')
+      if (meta) meta.setAttribute('content', resolved === 'light' ? '#faf8f3' : '#0f1115')
+    }
+
+    apply()
+    if (settings.theme === 'system') {
+      media.addEventListener('change', apply)
+      return () => media.removeEventListener('change', apply)
+    }
+  }, [settings.theme])
 
   function update(patch) {
     setSettings((s) => ({ ...s, ...patch }))
