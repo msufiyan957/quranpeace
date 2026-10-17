@@ -84,7 +84,7 @@ export default function SurahPage() {
   }
 
   return (
-    <div className="page container" style={{ '--arabic-scale': settings.arabicScale }}>
+    <div className="page container container--reader" style={{ '--arabic-scale': settings.arabicScale }}>
       <p style={{ marginTop: 16 }}>
         <Link to="/" aria-label="Back to all surahs" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, textDecoration: 'none', color: 'var(--text-dim)' }}>
           <PrevIcon style={{ width: 18, height: 18 }} /> All surahs
@@ -132,35 +132,37 @@ export default function SurahPage() {
         </button>
       </div>
 
-      {surah.ayahs.map((ayah) => (
-        <AyahCard
-          key={ayah.number}
-          ayah={ayah}
-          surahNumber={surahNumber}
-          isActive={isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah}
-          isPlaying={player.isPlaying}
-          isLoading={player.isLoading}
-          words={wordsBySurah?.get(ayah.numberInSurah)}
-          activeWordPosition={
-            isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah
-              ? player.activeWordPosition
-              : null
-          }
-          showTranslation={settings.showTranslation}
-          showTransliteration={settings.showTransliteration}
-          showWordMeaning={settings.showWordMeaning}
-          bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
-          onPlay={player.play}
-          onBookmark={(a) =>
-            toggleBookmark({
-              surahNumber,
-              surahName: surah.englishName,
-              numberInSurah: a.numberInSurah,
-              text: a.translation,
-            })
-          }
-        />
-      ))}
+      <div className="quran-page">
+        {surah.ayahs.map((ayah) => (
+          <AyahCard
+            key={ayah.number}
+            ayah={ayah}
+            surahNumber={surahNumber}
+            isActive={isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah}
+            isPlaying={player.isPlaying}
+            isLoading={player.isLoading}
+            words={wordsBySurah?.get(ayah.numberInSurah)}
+            activeWordPosition={
+              isCurrentSurah && player.currentAyah?.numberInSurah === ayah.numberInSurah
+                ? player.activeWordPosition
+                : null
+            }
+            showTranslation={settings.showTranslation}
+            showTransliteration={settings.showTransliteration}
+            showWordMeaning={settings.showWordMeaning}
+            bookmarked={isBookmarked(surahNumber, ayah.numberInSurah)}
+            onPlay={player.play}
+            onBookmark={(a) =>
+              toggleBookmark({
+                surahNumber,
+                surahName: surah.englishName,
+                numberInSurah: a.numberInSurah,
+                text: a.translation,
+              })
+            }
+          />
+        ))}
+      </div>
     </div>
   )
 }

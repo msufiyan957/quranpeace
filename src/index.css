@@ -76,6 +76,10 @@ button {
   padding: 0 16px;
 }
 
+.container--reader {
+  max-width: 1100px;
+}
+
 /* ---------- Header ---------- */
 
 .app-header {
@@ -434,25 +438,33 @@ button {
   height: 16px;
 }
 
-.ayah-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  margin-bottom: 12px;
+.quran-page {
+  border-top: 1px solid var(--border);
+}
+
+.quran-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  gap: 16px 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
   scroll-margin-top: 90px;
 }
 
-.ayah-card.is-active {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
+.quran-row.is-active {
+  background: rgba(47, 174, 122, 0.07);
 }
 
-.ayah-card__top {
+.quran-row__meaning {
+  order: 1;
+}
+
+.quran-row__controls {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  gap: 6px;
+  margin-bottom: 8px;
 }
 
 .ayah-badge {
@@ -467,24 +479,30 @@ button {
   font-size: 0.78rem;
   font-weight: 700;
   color: var(--accent);
+  flex-shrink: 0;
 }
 
-.ayah-card__actions {
-  display: flex;
-  gap: 6px;
+.quran-row__translation {
+  color: var(--text-dim);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
 }
 
-.ayah-card__arabic {
+.quran-row__arabic {
+  order: 2;
   font-size: calc(1.6rem * var(--arabic-scale, 1));
   display: flex;
   flex-wrap: wrap;
   direction: rtl;
   justify-content: flex-start;
   align-items: flex-start;
+  align-content: flex-start;
   gap: 0.2em 0.1em;
+  margin: 0;
 }
 
-.ayah-card__arabic .word {
+.quran-row__arabic .word {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -493,9 +511,24 @@ button {
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
-.ayah-card__arabic .word.is-active {
+.quran-row__arabic .word.is-active {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+@media (max-width: 760px) {
+  .quran-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .quran-row__arabic {
+    order: 1;
+  }
+
+  .quran-row__meaning {
+    order: 2;
+  }
 }
 
 .word__arabic {
@@ -526,13 +559,6 @@ button {
 .word.is-active .word__meaning {
   color: inherit;
   opacity: 0.85;
-}
-
-.ayah-card__translation {
-  margin-top: 12px;
-  color: var(--text-dim);
-  font-size: 1rem;
-  line-height: 1.6;
 }
 
 .empty-state {

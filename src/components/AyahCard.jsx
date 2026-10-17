@@ -20,15 +20,15 @@ const AyahCard = forwardRef(function AyahCard(
   ref
 ) {
   return (
-    <section
+    <div
       id={`ayah-${ayah.numberInSurah}`}
       ref={ref}
-      className={`ayah-card${isActive ? ' is-active' : ''}`}
+      className={`quran-row${isActive ? ' is-active' : ''}`}
       aria-label={`Ayah ${ayah.numberInSurah}`}
     >
-      <div className="ayah-card__top">
-        <span className="ayah-badge">{ayah.numberInSurah}</span>
-        <div className="ayah-card__actions">
+      <div className="quran-row__meaning">
+        <div className="quran-row__controls">
+          <span className="ayah-badge">{ayah.numberInSurah}</span>
           <button
             type="button"
             className="icon-btn"
@@ -53,8 +53,9 @@ const AyahCard = forwardRef(function AyahCard(
             )}
           </button>
         </div>
+        {showTranslation && <p className="quran-row__translation">{ayah.translation}</p>}
       </div>
-      <p className="ayah-card__arabic arabic" lang="ar">
+      <p className="quran-row__arabic arabic" lang="ar">
         {words ? (
           words.map((w) => (
             <span
@@ -72,8 +73,7 @@ const AyahCard = forwardRef(function AyahCard(
           ayah.arabic
         )}
       </p>
-      {showTranslation && <p className="ayah-card__translation">{ayah.translation}</p>}
-    </section>
+    </div>
   )
 })
 
