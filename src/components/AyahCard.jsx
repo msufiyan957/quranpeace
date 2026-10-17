@@ -59,7 +59,8 @@ const AyahCard = forwardRef(function AyahCard(
               key={w.position}
               className={`word${activeWordPosition === w.position ? ' is-active' : ''}`}
             >
-              {w.text}
+              <span className="word__arabic">{w.text}</span>
+              {w.meaning && <span className="word__meaning">{w.meaning}</span>}
             </span>
           ))
         ) : (

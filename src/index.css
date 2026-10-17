@@ -476,14 +476,19 @@ button {
 
 .ayah-card__arabic {
   font-size: calc(1.6rem * var(--arabic-scale, 1));
-  line-height: 2.4;
-  text-align: right;
+  display: flex;
+  flex-wrap: wrap;
+  direction: rtl;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.2em 0.1em;
 }
 
 .ayah-card__arabic .word {
-  display: inline-block;
-  padding: 0.05em 0.12em;
-  margin-inline-end: 0.15em;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.05em 0.3em 0.3em;
   border-radius: 6px;
   transition: background-color 0.15s ease, color 0.15s ease;
 }
@@ -491,6 +496,22 @@ button {
 .ayah-card__arabic .word.is-active {
   background: var(--accent);
   color: var(--accent-contrast);
+}
+
+.word__arabic {
+  line-height: 1.8;
+}
+
+.word__meaning {
+  font-size: 0.72rem;
+  line-height: 1.3;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.word.is-active .word__meaning {
+  color: inherit;
+  opacity: 0.85;
 }
 
 .ayah-card__translation {

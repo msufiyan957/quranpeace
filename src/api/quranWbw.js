@@ -19,7 +19,7 @@ async function getJSON(url) {
 }
 
 // Returns a Map<numberInSurah, word[]> for every ayah in the surah, where each
-// word is { position, text } — text already excludes end-of-ayah markers.
+// word is { position, text, meaning } — text already excludes end-of-ayah markers.
 export function getChapterWords(surahNumber) {
   if (chapterWordsCache.has(surahNumber)) return chapterWordsCache.get(surahNumber)
   const promise = getJSON(
@@ -29,7 +29,7 @@ export function getChapterWords(surahNumber) {
     for (const verse of data.verses) {
       const words = verse.words
         .filter((w) => w.char_type_name === 'word')
-        .map((w) => ({ position: w.position, text: w.text_uthmani }))
+        .map((w) => ({ position: w.position, text: w.text_uthmani, meaning: w.translation?.text || '' }))
       map.set(verse.verse_number, words)
     }
     return map
