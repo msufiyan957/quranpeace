@@ -5,9 +5,10 @@
   --border: #2c3140;
   --text: #f5f1e8;
   --text-dim: #b7b2a6;
-  --accent: #2fae7a;
-  --accent-dim: #1f8a60;
-  --accent-contrast: #06140d;
+  --accent: #e0ffc2;
+  --accent-dim: #c8ec9b;
+  --accent-contrast: #064734;
+  --accent-rgb: 224, 255, 194;
   --danger: #e2574c;
   --focus: #f3c969;
   --hover-overlay: rgba(255, 255, 255, 0.08);
@@ -24,9 +25,10 @@
   --border: #e3ddd0;
   --text: #211f1a;
   --text-dim: #6b665c;
-  --accent: #1f8a60;
-  --accent-dim: #176a4a;
+  --accent: #064734;
+  --accent-dim: #04352a;
   --accent-contrast: #ffffff;
+  --accent-rgb: 6, 71, 52;
   --danger: #c9372c;
   --focus: #b4790d;
   --hover-overlay: rgba(0, 0, 0, 0.06);
@@ -255,7 +257,7 @@ button {
 
 .icon-btn--active {
   color: var(--accent);
-  background: rgba(47, 174, 122, 0.15);
+  background: rgba(var(--accent-rgb), 0.15);
 }
 
 .icon-btn--lg {
@@ -376,7 +378,7 @@ button {
 
 .search-bar:focus-within {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(47, 174, 122, 0.15);
+  box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.15);
 }
 
 .search-bar input {
@@ -405,7 +407,7 @@ button {
   align-items: center;
   gap: 16px;
   overflow: hidden;
-  background: linear-gradient(135deg, var(--accent-dim), #164a35);
+  background: linear-gradient(135deg, #0b5c44, #064734);
   border-radius: var(--radius);
   padding: 18px 20px;
   margin-bottom: 20px;
@@ -565,7 +567,7 @@ button {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(47, 174, 122, 0.12);
+  background: rgba(var(--accent-rgb), 0.12);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
@@ -612,7 +614,7 @@ button {
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--accent);
-  background: rgba(47, 174, 122, 0.12);
+  background: rgba(var(--accent-rgb), 0.12);
   border-radius: 999px;
   padding: 1px 7px;
 }
@@ -720,7 +722,7 @@ button {
 }
 
 .quran-row.is-active {
-  background: rgba(47, 174, 122, 0.07);
+  background: rgba(var(--accent-rgb), 0.07);
 }
 
 .quran-row__meaning {
