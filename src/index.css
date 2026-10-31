@@ -1038,5 +1038,42 @@ button {
   font-style: italic;
   line-height: 1.6;
   max-width: 640px;
-  margin: 16px auto 24px;
+  margin: 16px auto 8px;
 }
+
+.footer-credit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0 24px;
+}
+
+.footer-credit__logo-link {
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.footer-credit__logo-link:hover {
+  opacity: 1;
+}
+
+.footer-credit__logo {
+  height: 14px;
+  width: auto;
+  display: none;
+}
+
+.footer-credit__logo--light {
+  display: inline-block;
+}
+
+:root:not([data-theme='light']) .footer-credit__logo--dark {
+  display: inline-block;
+}
+
+:root:not([data-theme='light']) .footer-credit__logo--light {
+  display: none;
+}
+

@@ -5,6 +5,8 @@ import { useBookmarks } from '../context/BookmarksContext.jsx'
 import SurahCard from '../components/SurahCard.jsx'
 import { SearchIcon, BookIcon, ChevronRightIcon } from '../components/Icons.jsx'
 import { getHadithOfTheDay } from '../data/hadiths.js'
+import deccanBridgeLogo from '../assets/deccanbridge-logo.svg'
+import deccanBridgeLogoReverse from '../assets/deccanbridge-logo-reverse.svg'
 
 function getGreeting() {
   const hour = new Date().getHours()
@@ -122,6 +124,17 @@ export default function Home() {
         </div>
         <p className="dedication">
           Built with the hope that it serves you well — and that it counts for good, in sha Allah.
+        </p>
+        <p className="footer-credit">
+          <a
+            href="https://deccanbridge.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer-credit__logo-link"
+          >
+            <img src={deccanBridgeLogo} alt="DeccanBridge" className="footer-credit__logo footer-credit__logo--light" />
+            <img src={deccanBridgeLogoReverse} alt="DeccanBridge" className="footer-credit__logo footer-credit__logo--dark" />
+          </a>
         </p>
       </div>
     </div>
